@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="credit-card">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="head">
+      <div>
+        <i class="fa-solid fa-credit-card fa-2xl"></i>
+      </div>
+      <div>Кредитна картичка</div>
+    </div>
+    <div class="number">
+      <div>{{ cardForm.get('cardNumber')?.value!.slice(0, 4) }}</div>
+      <div>{{ cardForm.get('cardNumber')?.value!.slice(4, 8) }}</div>
+      <div>{{ cardForm.get('cardNumber')?.value!.slice(8, 12) }}</div>
+      <div>{{ cardForm.get('cardNumber')?.value!.slice(12, 16) }}</div>
+    </div>
+    <div class="tail">
+      <div>{{ cardForm.get('cardHolder')?.value }}</div>
+      <div class="exp">Exp: <span class="exp-date">{{ cardForm.get('expiryMonth')?.value }}
+        /{{ cardForm.get('expiryYear')?.value }}</span></div>
+    </div>
+  </div>
+
+  <form [formGroup]="cardForm" (ngSubmit)="onSubmit()" class="card-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="cardNumber">Број на картичката</label>
+        <input id="cardNumber" formControlName="cardNumber" type="text"/>
+        @if (cardForm.get('cardNumber')?.invalid && cardForm.get('cardNumber')?.touched) {
+          <div>
+            @if (cardForm.get('cardNumber')?.errors?.['required']) {
+              <small>Бројот на картичката е задолжителен</small>
+            }
+            @if (cardForm.get('cardNumber')?.errors?.['pattern']) {
+              <small>Бројот на картичката мора да е 16 бројки</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="cardHolder">Сопственик на картичката</label>
+        <input id="cardHolder" formControlName="cardHolder" type="text"/>
+        @if (cardForm.get('cardHolder')?.invalid && cardForm.get('cardHolder')?.touched) {
+          <div>
+            @if (cardForm.get('cardHolder')?.errors?.['required']) {
+              <small>Сопственикот на картичката е задолжителен</small>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="expiryMonth">Месец на истекување (MM)</label>
+        <input id="expiryMonth" formControlName="expiryMonth" type="text"/>
+        @if (cardForm.get('expiryMonth')?.invalid && cardForm.get('expiryMonth')?.touched) {
+          <div>
+            @if (cardForm.get('expiryMonth')?.errors?.['required']) {
+              <small>Месецот е задолжителен</small>
+            }
+            @if (cardForm.get('expiryMonth')?.errors?.['pattern']) {
+              <small>Месецот не е валиден</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="expiryYear">Година на истекување (YY)</label>
+        <input id="expiryYear" formControlName="expiryYear" type="text"/>
+        @if (cardForm.get('expiryYear')?.invalid && cardForm.get('expiryYear')?.touched) {
+          <div>
+            @if (cardForm.get('expiryYear')?.errors?.['required']) {
+              <small>Годината е задолжителна</small>
+            }
+            @if (cardForm.get('expiryYear')?.errors?.['pattern']) {
+              <small>Годината не е валидна</small>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (cardForm.errors?.['expired'] && (cardForm.get('expiryMonth')?.touched || cardForm.get('expiryYear')?.touched)) {
+      <div>
+        <small>Картичката е истечена</small>
+      </div>
+    }
+
+    <div class="form-group">
+      <label for="cvv">CVV</label>
+      <input id="cvv" formControlName="cvv" type="text"/>
+      @if (cardForm.get('cvv')?.invalid && cardForm.get('cvv')?.touched) {
+        <div>
+          @if (cardForm.get('cvv')?.errors?.['required']) {
+            <small>CVV е задолжително</small>
+          }
+          @if (cardForm.get('cvv')?.errors?.['pattern']) {
+            <small>CVV мора да е 3 бројки</small>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="address">Адреса на живеење</label>
+      <input id="address" formControlName="address" type="text"/>
+      @if (cardForm.get('address')?.invalid && cardForm.get('address')?.touched) {
+        <div>
+          @if (cardForm.get('address')?.errors?.['required']) {
+            <small>Адресата е задолжителна</small>
+          }
+        </div>
+      }
+    </div>
+
+    <button type="submit">Плати</button>
+  </form>
+
+</div>

@@ -1,0 +1,70 @@
+.stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 0.625em;
+  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-blend-mode: multiply;
+}
+
+app-dropdown {
+  display: flex;
+  align-items: center;
+}
+
+app-search-bar {
+  margin-left: auto;
+}
+
+.myStore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625em 0.9375em;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  text-align: center;
+  font-size: 1em;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-blend-mode: multiply;
+}
+
+.myStore:hover {
+  background-color: rgba(42,82,41,0.47);
+  color: #fff;
+  border-color: #333;
+}
+
+.selected {
+  background-color: rgba(42,82,41,1);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .stores {
+    padding: 0.5em;
+  }
+
+  .myStore {
+    padding: 0.5em 1em;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .stores {
+    padding: 0.5em;
+  }
+
+  .myStore {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+  }
+
+  app-search-bar {
+    margin-left: 0;
+    margin-bottom: 1em;
+  }
+}

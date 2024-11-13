@@ -1,0 +1,49 @@
+<app-header></app-header>
+<div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col"><h4><b>Количка</b></h4></div>
+          <div class="col align-self-center text-right text-muted">{{ service.cartItems.length }} производи</div>
+          <img class="stores" [ngClass]="{'selected': isStoreSelected(undefined)}" (click)="ChangePrice(undefined)"  src="images.png">
+          @for(store of stores; track store.shopId){
+            <img class="stores" [ngClass]="{'selected': isStoreSelected(store)}" (click)="ChangePrice(store)"  src="{{store.image}}">
+          }
+        </div>
+      </div>
+      @for (product of service.cartItems; track $index) {
+        <div class="row">
+          <div class="row main align-items-center">
+            <div class="col-2"><img class="img-fluid" src="{{product.image}}"></div>
+            <div class="col">
+              <div class="row" [ngClass]="{'isSelected': service.canBuy(product)}">{{ product.name }}</div>
+            </div>
+            <div class="col">
+              <button (click)="amountService.subtract(product.name); service.RemoveOneItem(product.name, 1)" class="changeValue">-</button>
+              <span id="amount">{{ product.amount }}</span>
+              <button (click)="amountService.add(product.name); service.cartAddOneItem(product.name, product.image)" class="changeValue">+</button>
+            </div>
+            <div class="col">{{ product.price | currency:'MKD': 'symbol' }} <mat-icon class="close" (click)="DeleteItem(product.name, product.amount)"> delete</mat-icon></div>
+          </div>
+        </div>
+      }
+      <p class="bottom-text">
+        <span class="back-to-shop" [routerLink]="'/home'">Назад</span>
+        <span class="cheapest-shop"> {{service.cheapestTotalPrice}} </span>
+      </p>
+    </div>
+    <div class="col-md-4 summary">
+      <div><h5><b></b></h5></div>
+      <hr>
+      <div class="row">
+        <div class="col" style="padding-left: 1vh;">ПРОИЗВОДИ: {{ service.cartItems.length }}</div>
+      </div>
+      <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+        <div class="col">ЦЕНА</div>
+        <div class="col text-right">{{ service.totalPrice | currency:'MKD': 'symbol' }}</div>
+      </div>
+      <button class="btn" [ngClass]="{'canBuyAll': service.canBuyAllItems()}" (click)="buyItems()">КАСА</button>
+    </div>
+  </div>
+</div>

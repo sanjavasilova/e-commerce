@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+@if (orders$ | async; as orders) {
+  <div class="orders-list">
+    @for (order of orders.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index) {
+      <div class="order-container">
+        <h2>Нарачка {{ pageIndex * pageSize + $index + 1 }}</h2>
+        <div class="items-list">
+          @for (item of order.items; track $index) {
+            <div class="item-card">
+              <img [src]="item.product.image" class="item-image" alt="{{ item.product.name }}">
+              <div class="item-details">
+                <h1 class="item-name">{{ item.product.name }}</h1>
+                <p class="item-category">{{ item.product.category.name }} - {{ item.product.subcategory.name }}</p>
+                <h2 class="item-quantity">Количина: {{ item.quantity }}</h2>
+                <h2 class="item-price">Цена: {{ item.price | currency:'MKD': 'symbol' }}</h2>
+              </div>
+            </div>
+          }
+        </div>
+        <h2 class="total-price">Вкупна цена: {{ calculateTotalPrice(order.items) | currency:'MKD': 'symbol' }}</h2>
+      </div>
+    }
+
+    <div class="paginator">
+      <mat-paginator [length]="orders.length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="[5,10,25,50]"
+                     aria-label="Select page"
+                     (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+  </div>
+} @else {
+  <p class="no-orders">Нема Претходни нарачки.</p>
+}

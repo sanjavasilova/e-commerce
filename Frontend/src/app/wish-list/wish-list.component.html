@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container">
+  <div class="product-list">
+    @if (products$ | async; as products) {
+      @for (product of products.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track product.id) {
+        <div class="product-card">
+          <h1 class="product-name"
+              [routerLink]="'/product-details/' + product.category.name + '/' + product.subcategory.name + '/' + product.name"
+              routerLinkActive="active">{{ product.name }}</h1>
+          <img [src]="product.image" alt="{{ product.name }}" class="product-image"
+               [routerLink]="'/product-details/' + product.category.name + '/' + product.subcategory.name + '/' + product.name"
+               routerLinkActive="active">
+          <h2 class="product-category">{{ product.category.name }}</h2>
+          <h2 class="product-subcategory">{{ product.subcategory.name }}</h2>
+          <div class="buttons">
+            <button id="add" (click)="addToCartService.cartAdd(product.name, product.image)"
+                    (click)="amountService.ResetAmount(product.name)">Додај
+            </button>
+            <button class="remove-from-wishlist" (click)="removeFromWishList(product.id)">
+              <mat-icon>star</mat-icon>
+            </button>
+          </div>
+        </div>
+      }
+    } @else {
+      <h1 class="no-products">Нема Производи</h1>
+    }
+    @if (products$ | async; as products) {
+      <div class="paginator">
+      <mat-paginator [length]="products.length"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="[5,10,25,50]"
+                     aria-label="Select page"
+                     (page)="onPageChange($event)">
+      </mat-paginator>
+      </div>
+    }
+  </div>
+</div>

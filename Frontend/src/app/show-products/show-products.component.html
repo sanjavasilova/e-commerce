@@ -1,0 +1,41 @@
+<app-header></app-header>
+@if(showProductsService.loading){
+  <div class="loading-container">
+    <img class="loading" src="Loading_icon.gif">
+  </div>
+}
+<div class="items-container">
+  @if (showProductsService.products.length > 0 && !showProductsService.loading) {
+    @for (product of showProductsService.products.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track product.id) {
+      <div class="item">
+        <img src="{{product.image}}"
+             [routerLink]="'/product-details/' + product.category.name + '/' + product.subcategory.name + '/' + product.name"
+             routerLinkActive="active">
+        <p class="name"
+           [routerLink]="'/product-details/' + product.category.name + '/' + product.subcategory.name + '/' + product.name"
+           routerLinkActive="active">{{ product.name }}</p>
+
+        <div class="amountOptions">
+          <button class="changeValue" (click)="amountService.subtract(product.name)">-</button>
+          <span id="amount"> {{ amountService.displayAmount(product.name) }}</span>
+          <button class="changeValue" (click)="amountService.add(product.name)">+</button>
+        </div>
+        <div class="buttons">
+          <button id="add" (click)="addToCartService.cartAdd(product.name, product.image); resetNumber(product.name)">Додај
+          </button>
+          <button class="wishlist" (click)="wishlist(product)">
+            <mat-icon>{{productIcons.get(product.id)}}</mat-icon>
+          </button>
+        </div>
+      </div>
+    }
+    <div class="paginator">
+    <mat-paginator [length]="showProductsService.products.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[5,10,25,50]"
+                   aria-label="Select page"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+    </div>
+  }
+</div>

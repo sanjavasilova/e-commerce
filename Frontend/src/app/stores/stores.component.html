@@ -1,0 +1,7 @@
+<ul class="stores">
+  <app-dropdown></app-dropdown>
+    @for (store of stores; track store.shopId) {
+        <li class="myStore" [ngClass]="{'selected': isSelected(store)}" [routerLink]="getRouterLink(store)" (click)="Selected(store)"> {{store.name}}</li>
+    }
+  <app-search-bar></app-search-bar>
+</ul>

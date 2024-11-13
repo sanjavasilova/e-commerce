@@ -1,0 +1,34 @@
+<app-header></app-header>
+@if (product$ | async; as product) {
+  <div class="product-container">
+    <div class="product-image">
+      <img [src]="product.image" alt="{{ product.name }}" />
+    </div>
+    <div class="product-details">
+      <h1>{{ product.name }}</h1>
+      <div class="product-price">
+        @if (shop_products$ | async; as shopProducts) {
+          <div class="shop-products">
+            @for (shopProduct of shopProducts; track $index) {
+              <div class="shop-product">
+                <p class="shop-name">{{ shopProduct.shop.name }}</p>
+                <p class="shop-price">{{ shopProduct.price | currency:'MKD': 'symbol' }}</p>
+              </div>
+            }
+          </div>
+        } @else {
+          <div>Loading...</div>
+        }
+      </div>
+      <div class="quantity-selector">
+        <button (click)="amountService.subtract(product.name)">-</button>
+        <span id="quantity">{{ amountService.displayAmount(product.name) }}</span>
+        <button (click)="amountService.add(product.name)">+</button>
+      </div>
+      <div class="action-buttons">
+        <button class="add-to-cart" (click)="addToCartService.cartAdd(product.name, product.image)" [routerLink]="'/home'">ВО КОШНИЧКА </button>
+        <button class="add-to-wishlist" (click)="addProduct(product)">{{ wishListText }}</button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="dropdown">
+    <div class="dropdown-title">Категории</div>
+    <div class="subheadings">
+      @for (category of categories; track $index) {
+        <div class="dropdown-category">
+          <div class="dropdown-title-category" [routerLink]="'/category/'+category.name">
+            {{ category.name.replaceAll("-"," ") }}
+          </div>
+          <div class="subheadings-subcategory">
+            @for (subcategory of category.subcategories; track $index) { 
+              <a [routerLink]="calculateRoute(subcategory.category.name,subcategory.name)" routerLinkActive="active">
+
+                {{ subcategory.name.replaceAll("-"," ") }}
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

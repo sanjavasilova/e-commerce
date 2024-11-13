@@ -1,0 +1,299 @@
+.title{
+  margin-bottom: 5vh;
+}
+.card{
+  margin: auto;
+  max-width: 950px;
+  width: 90%;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1rem;
+  border: transparent;
+}
+@media(max-width:767px){
+  .card{
+    margin: 3vh auto;
+  }
+}
+.cart{
+  background-color: #fff;
+  padding: 4vh 5vh;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+@media(max-width:767px){
+  .cart{
+    padding: 4vh;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: 1rem;
+  }
+}
+.summary{
+  background-color: #ddd;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 4vh;
+  color: rgb(65, 65, 65);
+}
+@media(max-width:767px){
+  .summary{
+    border-top-right-radius: unset;
+    border-bottom-left-radius: 1rem;
+  }
+}
+.summary .col-2{
+  padding: 0;
+}
+.summary .col-10
+{
+  padding: 0;
+}.row{
+   margin: 0;
+ }
+.title b{
+  font-size: 1.5rem;
+}
+.main{
+  margin: 0;
+  padding: 2vh 0;
+  width: 100%;
+}
+.col-2, .col{
+  padding: 0 1vh;
+}
+a{
+  padding: 0 1vh;
+}
+.close{
+  font-size: 0.7rem;
+  cursor: pointer;
+  float: right;
+  padding: 5px;
+  transform: scale(2);
+}
+img{
+  width: 3.5rem;
+}
+
+h4{
+  font-size: 1em;
+}
+.title {
+  margin-bottom: 1.25em;
+}
+
+.card {
+  margin: auto;
+  max-width: 59.375em;
+  width: 90%;
+  box-shadow: 0 0.375em 1.25em 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1em;
+  border: transparent;
+}
+
+@media (max-width: 48em) {
+  .card {
+    margin: 1.875em auto;
+  }
+}
+
+.cart {
+  background-color: #fff;
+  padding: 1.5em 2em;
+  border-bottom-left-radius: 1em;
+  border-top-left-radius: 1em;
+}
+
+@media (max-width: 48em) {
+  .cart {
+    padding: 2.5em;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: 1em;
+  }
+}
+
+.summary {
+  background-color: #ddd;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  padding: 2.5em;
+  color: rgb(65, 65, 65);
+}
+
+@media (max-width: 48em) {
+  .summary {
+    border-top-right-radius: unset;
+    border-bottom-left-radius: 1em;
+  }
+}
+
+.summary .col-2, .summary .col-10 {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.title b {
+  font-size: 1.5em;
+}
+
+.main {
+  margin: 0;
+  padding: 1.25em 0;
+  width: 100%;
+}
+
+.col-2, .col {
+  padding: 0 0.0625em;
+}
+
+a {
+  padding: 0 0.0625em;
+}
+
+.close {
+  margin-left: auto;
+  font-size: 0.7em;
+  cursor: pointer;
+}
+
+img {
+  width: 2.1875em;
+}
+
+h5 {
+  margin-top: 2.5em;
+}
+
+hr {
+  margin-top: 0.78125em;
+}
+
+form {
+  padding: 1.25em 0;
+}
+
+select, input {
+  border: 0.0625em solid rgba(0, 0, 0, 0.137);
+  padding: 1em;
+  margin-bottom: 2.5em;
+  outline: none;
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.btn {
+  background-color: #000;
+  border-color: #000;
+  color: white;
+  width: 100%;
+  font-size: 0.7em;
+  margin-top: 2.5em;
+  padding: 1em;
+  border-radius: 0;
+}
+
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+  color: white;
+  user-select: none;
+  transition: none;
+}
+
+.btn:hover {
+  color: white;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+#code {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+}
+
+.changeValue {
+  justify-content: center;
+  width: 1.875em;
+  height: 1.875em;
+  cursor: pointer;
+  border: 0.0625em solid #ccc;
+  border-radius: 0.3125em;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+#amount {
+  align-items: center;
+  margin: 0 0.625em;
+  font-size: 1em;
+}
+
+.cheapest-shop {
+  float: bottom;
+  text-align: right;
+}
+
+.bottom-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1em 0;
+  margin-bottom: 0;
+}
+
+.back-to-shop {
+  margin-top: 4.5em;
+  display: inline-block;
+  cursor: pointer;
+  color: darkgrey;
+}
+
+.back-to-shop:hover {
+  color: #000;
+}
+
+.bottom-text .back-to-shop {
+  flex: 1;
+  text-align: left;
+}
+
+.bottom-text .cheapest-shop {
+  flex: 1;
+  text-align: right;
+}
+
+.stores {
+  width: 2.5em;
+  height: 1.875em;
+  cursor: pointer;
+  opacity: 0.5;
+  padding-left: 0.3125em;
+}
+
+.selected {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.isSelected{
+  color: red;
+}
+.canBuyAll{
+  background-color: darkgrey;
+  cursor: auto;
+}

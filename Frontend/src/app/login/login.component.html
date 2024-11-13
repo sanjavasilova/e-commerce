@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="center-container">
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>Најави се</h2>
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="username">Корисничко име</label>
+          <input type="text" id="username" formControlName="username" required>
+          @if(loginForm.get('username')?.invalid && loginForm.get('username')?.touched && loginForm.get('username')?.errors?.['required']){
+            <small>Корисничкото име е задолжително</small>
+          }
+        </div>
+        <div class="form-group">
+          <label for="password">Лозинката</label>
+          <input type="password" id="password" formControlName="password" required>
+          @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']){
+            <small>Лозинката е задолжителна</small>
+          }
+        </div>
+        @if(serverError){
+          <div class="form-group">
+            <small>{{ serverError }}</small>
+          </div>
+        }
+        <button type="submit" #loginButton>Најави се</button>
+        <p>Немаш профил? <a [routerLink]="'/register'">Регистрирај се тука</a></p>
+      </form>
+    </div>
+  </div>
+</div>

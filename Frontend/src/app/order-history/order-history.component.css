@@ -1,0 +1,193 @@
+>>> html, body {
+  height: 100%;
+}
+
+>>> body {
+  min-height: 100vh;
+}
+
+h1, h2, p, span, a {
+  line-height: 1.3;
+  margin: 0.3em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 1em;
+  margin: auto;
+}
+
+.order-container {
+  margin: 0.625em;
+  padding: 0.625em;
+  border: 0.0625em solid #ddd;
+  border-radius: 0.5em;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+}
+.order-container:last-of-type {
+  margin-bottom: 4em;
+}
+
+.item-card {
+  padding: 0.625em;
+  margin: 0.625em;
+  border: 0.0625em solid #ddd;
+  border-radius: 0.5em;
+  height: 15em;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.1);
+}
+
+.item-name {
+  font-size: 1.2em;
+  color: #2c3e50;
+}
+
+.item-image {
+  max-width: 6.25em;
+  border-radius: 0.5em;
+}
+
+.item-category {
+  font-size: 0.9em;
+  color: #7f8c8d;
+}
+
+.item-quantity, .item-price, .total-price {
+  font-size: 1.1em;
+  color: #27ae60;
+}
+
+.total-price {
+  font-weight: bold;
+  margin-top: 1.25em;
+}
+
+p {
+  color: #2c3e50;
+}
+
+.no-orders{
+  font-size: 20px;
+  text-align: center;
+  color: #2E8B57;
+  font-weight: bold;
+}
+
+mat-paginator {
+  margin: 0 auto;
+  bottom: 0;
+}
+.paginator{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 1.2em;
+  }
+
+  .orders-list {
+    gap: 1.5em;
+  }
+
+  .order-container {
+    margin: 0.5em;
+    padding: 0.5em;
+  }
+
+  .item-card {
+    height: auto;
+  }
+
+  .item-name {
+    font-size: 1em;
+  }
+
+  .item-image {
+    max-width: 5em;
+  }
+
+  .item-category {
+    font-size: 0.8em;
+  }
+
+  .item-quantity, .item-price, .total-price {
+    font-size: 1em;
+  }
+
+  .total-price {
+    margin-top: 1em;
+  }
+
+  .no-orders {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, h2 {
+    font-size: 1em;
+  }
+
+  .orders-list {
+    padding: 0.5em;
+  }
+
+  .order-container {
+    margin: 0.25em;
+    padding: 0.25em;
+  }
+
+  .item-card {
+    height: auto;
+    padding: 0.5em;
+    margin: 0.5em;
+  }
+
+  .item-name {
+    font-size: 0.9em;
+  }
+
+  .item-image {
+    max-width: 4em;
+  }
+
+  .item-category {
+    font-size: 0.7em;
+  }
+
+  .item-quantity, .item-price, .total-price {
+    font-size: 0.9em;
+  }
+
+  .total-price {
+    margin-top: 0.75em;
+  }
+
+  .no-orders {
+    font-size: 0.9em;
+  }
+
+  .paginator {
+    bottom: 0;
+    left: 0;
+    transform: none;
+  }
+}

@@ -1,0 +1,21 @@
+<app-header></app-header>
+@if (subcategories$ | async; as subcategories) {
+  <div class="items-container">
+    @for (subcategory of subcategories.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); track $index)  {
+      <div class="item">
+        <img src="{{subcategory.image}}"
+             [routerLink]="'/category-subcategory/' + subcategory.category.name + '/' + subcategory.name"
+             routerLinkActive="active">
+        <p class="name" [routerLink]="'/category-subcategory/' + subcategory.category.name + '/' + subcategory.name"
+            routerLinkActive="active">{{ subcategory.name.replaceAll("-", " ") }}</p>
+
+      </div>
+    }
+  </div>
+  <mat-paginator [length]="subcategories.length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5,10,25,50]"
+                 aria-label="Select page"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+}

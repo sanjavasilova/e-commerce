@@ -1,0 +1,84 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 25em;
+  padding: 1.25em;
+}
+
+.auth-box {
+  background-color: #fff;
+  border-radius: 0.5em;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+  padding: 1.25em;
+}
+
+.auth-box h2 {
+  margin-bottom: 1.25em;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 0.9375em;
+  margin-right: 1.25em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.25em;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5em;
+  border: 0.0625em solid #ccc;
+  border-radius: 0.25em;
+}
+
+button {
+  width: 100%;
+  padding: 0.625em;
+  background-color: rgba(42, 82, 41, 0.70);
+  border: none;
+  border-radius: 0.25em;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgba(42, 82, 41, 1);
+}
+
+p {
+  text-align: center;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+form div {
+  margin-bottom: 1em;
+}
+
+input.ng-invalid.ng-touched {
+  border: 0.0625em solid red;
+}
+
+small {
+  color: red;
+  font-size: 0.875em;
+}

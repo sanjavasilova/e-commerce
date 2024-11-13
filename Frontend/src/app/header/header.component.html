@@ -1,0 +1,43 @@
+<h1 [routerLink]="'/home'">ПАЗАРИ</h1>
+@if(showStores) {
+  <app-stores></app-stores>
+}
+<div class="auth-buttons">
+  @if (loginService.loggedIn$ | async) {
+    <div class="buttons-container">
+      <button mat-fab [matMenuTriggerFor]="userMenu" extended>
+        <mat-icon>person</mat-icon>
+      </button>
+      <mat-menu #userMenu='matMenu' class="customize-mat-menu">
+        <h6 id="username">{{ authService.username$ | async }}</h6>
+        <hr>
+        <button [routerLink]="'/order-history'" mat-fab extended>
+          <mat-icon>shopping_basket</mat-icon>
+          Историја
+        </button>
+        <hr>
+        <button [routerLink]="'/wishlist'" mat-fab extended>
+          <mat-icon>favorite</mat-icon>
+          Омилени
+        </button>
+        <hr>
+        <app-logout></app-logout>
+      </mat-menu>
+
+    </div>
+  } @else {
+    <div class="buttons-container">
+      <button [routerLink]="'/register'" mat-fab extended>Регистрирај се</button>
+      <button [routerLink]="'/login'" mat-fab extended>Најави се</button>
+
+    </div>
+  }
+
+  @if(showCart){
+    <button mat-fab class="shopping_cart" [routerLink]="'/cart'">
+      <mat-icon>shopping_cart</mat-icon>
+      <span class="cart-count"> {{cartService.cartItems.length}}</span>
+    </button>
+  }
+</div>
+
